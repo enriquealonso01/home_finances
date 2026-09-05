@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "sheets": {
+      "command": "node",
+      "args": ["mcps/sheets/server.js"]
+    },
+    "plaid": {
+      "command": "node",
+      "args": ["mcps/plaid/server.js"]
+    }
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "version": 1,
+  "accounts": [
+    {
+      "account_id": "LzAoogjxnMS3QPwnJqaougDnOZxeKzUNqqMnD",
+      "source": "plaid",
+      "institution": "Chase",
+      "plaid_name": "TOTAL CHECKING",
+      "mask": "2119",
+      "subtype": "checking",
+      "labels": { "family": "CHASE", "llc": null },
+      "is_business": false,
+      "notes": "Personal checking. HEICO paychecks deposit here; savings transfers originate here."
+    },
+    {
+      "account_id": "1pYEEdPgxrTmvNMyEYjQu9ALQzYOZnF0PPve8",
+      "source": "plaid",
+      "institution": "Chase",
+      "plaid_name": "CREDIT CARD",
+      "plaid_official_name": "Ultimate Rewards®",
+      "mask": "2230",
+      "subtype": "credit card",
+      "labels": { "family": "CHASE CC", "llc": null },
+      "is_business": false,
+      "notes": "Personal Chase Sapphire/Freedom. Variable retail purchases."
+    },
+    {
+      "account_id": "waXyyz8g5Lhj3e4zXNAyCX5870jLDNUOQQ4j3",
+      "source": "plaid",
+      "institution": "Chase",
+      "plaid_name": "BUS COMPLETE CHK",
+      "mask": "2502",
+      "subtype": "checking",
+      "labels": { "family": "Chase Q", "llc": "P&S CHK 2502" },
+      "is_business": true,
+      "notes": "Chase Business Checking for Proven & Solved LLC. Pays rent, parking, lease insurance, etc. Small debit-card purchases too."
+    },
+    {
+      "account_id": "6pYVV1KLQwTypRz0OYgXs6YARNpDK5Uq88J4p",
+      "source": "plaid",
+      "institution": "Chase",
+      "plaid_name": "E. ALONSO",
+      "plaid_official_name": "Ultimate Rewards®",
+      "mask": "5441",
+      "subtype": "credit card",
+      "labels": { "family": "BUSINESS Q", "llc": "P&S Credit 5441" },
+      "is_business": true,
+      "notes": "Chase Ink Business credit card. Main LLC spend: software subs, AWS, business travel."
+    },
+    {
+      "account_id": "Dz1ooaBmD0Sam3qxgKnvSVjkd0obJqUM55a9d",
+      "source": "plaid",
+      "institution": "Chase",
+      "plaid_name": "CHASE SAVINGS",
+      "mask": "5650",
+      "subtype": "savings",
+      "labels": { "family": null, "llc": null },
+      "is_business": false,
+      "notes": "Personal savings. Receives 'Savings Account' transfer rows from CHASE checking; no purchases."
+    },
+    {
+      "account_id": "O3D3rDgyRrU3pOKXNEJecqN3ay5aOzspnMEk7",
+      "source": "plaid",
+      "institution": "Marcus by Goldman Sachs",
+      "plaid_name": "2026 LLC Taxes",
+      "mask": "5485",
+      "subtype": "savings",
+      "labels": { "family": null, "llc": null },
+      "is_business": false,
+      "notes": "Marcus savings bucket for LLC tax set-asides. Receives transfers from Chase; transactions skipped (no purchases happen here)."
+    },
+    {
+      "account_id": "Mq6q06mBM0cNpZV4v8agUbaOX1DXKeC0JQr1J",
+      "source": "plaid",
+      "institution": "Marcus by Goldman Sachs",
+      "plaid_name": "1K Emergency Fund",
+      "mask": "5498",
+      "subtype": "savings",
+      "labels": { "family": null, "llc": null },
+      "is_business": false,
+      "notes": "Marcus emergency fund. Transactions skipped."
+    },
+    {
+      "account_id": "0ejqrj63yMcO65OB9w01sPmyz7E779IBZmawpv",
+      "source": "plaid",
+      "institution": "Discover",
+      "plaid_name": "Discover it Card",
+      "plaid_official_name": "Discover it Card",
+      "mask": "7198",
+      "subtype": "credit card",
+      "labels": { "family": "DISCOVER CC", "llc": null },
+      "is_business": false,
+      "notes": "Personal Discover it card. Linked 2026-06-28. Plaid history ~90 days back."
+    },
+    {
+      "account_id": "apple_card_csv",
+      "source": "csv",
+      "institution": "Apple Card",
+      "plaid_name": null,
+      "mask": null,
+      "subtype": "credit card",
+      "labels": { "family": "APPLE CC", "llc": null },
+      "is_business": false,
+      "notes": "Apple Card. No Plaid support; transactions imported via CSV dropped in Drive folder APPLE_CARD_DRIVE_FOLDER_ID."
+    }
+  ],
+  "unmapped_labels_pending_link": [
+    "WELLS FARGO"
+  ]
+}

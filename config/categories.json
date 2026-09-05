@@ -1,0 +1,1933 @@
+{
+  "version": 1,
+  "trained_on": [
+    "Jan 2026",
+    "Feb 2026",
+    "Mar 2026"
+  ],
+  "total_rows": 303,
+  "categories_seen": {
+    "Apartment": 45,
+    "Take out/Uber Eats": 14,
+    "Other": 22,
+    "Car": 23,
+    "HEICO": 13,
+    "Phone": 4,
+    "Groceries": 23,
+    "Comidas EJ": 11,
+    "Parking Afuera": 7,
+    "Shopping": 13,
+    "Subscriptions": 11,
+    "Personal": 15,
+    "Exceptions": 34,
+    "Comida/Salida Amigos": 18,
+    "Comunidad": 2,
+    "Ticket Flipping": 5,
+    "Savings": 7,
+    "Business Q": 36
+  },
+  "ambiguous_count": 10,
+  "ambiguous_top": [
+    {
+      "key": "amazon",
+      "distribution": {
+        "Personal": 3,
+        "Shopping": 3,
+        "Apartment": 7
+      },
+      "samples": 13
+    },
+    {
+      "key": "cvs",
+      "distribution": {
+        "Apartment": 2,
+        "Other": 2,
+        "Personal": 1
+      },
+      "samples": 5
+    },
+    {
+      "key": "target",
+      "distribution": {
+        "Groceries": 2,
+        "Apartment": 2
+      },
+      "samples": 4
+    },
+    {
+      "key": "burlington",
+      "distribution": {
+        "Exceptions": 1,
+        "Apartment": 1
+      },
+      "samples": 2
+    },
+    {
+      "key": "five below",
+      "distribution": {
+        "Other": 1,
+        "Apartment": 1
+      },
+      "samples": 2
+    },
+    {
+      "key": "ross",
+      "distribution": {
+        "Apartment": 1,
+        "Shopping": 1
+      },
+      "samples": 2
+    },
+    {
+      "key": "walmart",
+      "distribution": {
+        "Personal": 1,
+        "Exceptions": 1
+      },
+      "samples": 2
+    },
+    {
+      "key": "raisin canes",
+      "distribution": {
+        "Comida/Salida Amigos": 1,
+        "Comidas EJ": 1
+      },
+      "samples": 2
+    },
+    {
+      "key": "shell",
+      "distribution": {
+        "Other": 1,
+        "Car": 1
+      },
+      "samples": 2
+    },
+    {
+      "key": "hobby lobby",
+      "distribution": {
+        "Apartment": 1,
+        "Exceptions": 1
+      },
+      "samples": 2
+    }
+  ],
+  "merchant_rules": {
+    "apartment parking": {
+      "category": "Apartment",
+      "confidence": 1,
+      "samples": 2,
+      "distribution": {
+        "Apartment": 2
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "APARTMENT PARKING"
+    },
+    "take out honeymoon": {
+      "category": "Take out/Uber Eats",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Take out/Uber Eats": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Take out Honeymoon"
+    },
+    "7 eleven": {
+      "category": "Other",
+      "confidence": 1,
+      "samples": 2,
+      "distribution": {
+        "Other": 2
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "7-eleven"
+    },
+    "uber": {
+      "category": "Car",
+      "confidence": 1,
+      "samples": 2,
+      "distribution": {
+        "Car": 2
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Uber"
+    },
+    "heico paycheck": {
+      "category": "HEICO",
+      "confidence": 1,
+      "samples": 12,
+      "distribution": {
+        "HEICO": 12
+      },
+      "typical_card": "WELLS FARGO",
+      "sample_desc": "HEICO Paycheck"
+    },
+    "phone jess": {
+      "category": "Phone",
+      "confidence": 1,
+      "samples": 3,
+      "distribution": {
+        "Phone": 3
+      },
+      "typical_card": "WELLS FARGO",
+      "sample_desc": "Phone Jess"
+    },
+    "trader joe s": {
+      "category": "Groceries",
+      "confidence": 1,
+      "samples": 3,
+      "distribution": {
+        "Groceries": 3
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "TRADER JOE'S"
+    },
+    "uber eats": {
+      "category": "Take out/Uber Eats",
+      "confidence": 1,
+      "samples": 7,
+      "distribution": {
+        "Take out/Uber Eats": 7
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Uber Eats"
+    },
+    "almuerzo ej": {
+      "category": "Comidas EJ",
+      "confidence": 1,
+      "samples": 2,
+      "distribution": {
+        "Comidas EJ": 2
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Almuerzo EJ"
+    },
+    "guitar center": {
+      "category": "Other",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Other": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Guitar center"
+    },
+    "miami string": {
+      "category": "Other",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Other": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Miami String"
+    },
+    "cena ej rusty pelican": {
+      "category": "Comidas EJ",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Comidas EJ": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Cena EJ - Rusty Pelican"
+    },
+    "amazon compras": {
+      "category": "Apartment",
+      "confidence": 0.8,
+      "samples": 10,
+      "distribution": {
+        "Apartment": 8,
+        "Shopping": 1,
+        "Car": 1
+      },
+      "typical_card": "DISCOVER CC",
+      "sample_desc": "Amazon Compras"
+    },
+    "um parking": {
+      "category": "Parking Afuera",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Parking Afuera": 1
+      },
+      "typical_card": "CHASE CC",
+      "sample_desc": "UM Parking"
+    },
+    "smoothie king": {
+      "category": "Take out/Uber Eats",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Take out/Uber Eats": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Smoothie king"
+    },
+    "metro kike": {
+      "category": "Car",
+      "confidence": 1,
+      "samples": 2,
+      "distribution": {
+        "Car": 2
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Metro Kike"
+    },
+    "victoria secret": {
+      "category": "Shopping",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Shopping": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Victoria Secret"
+    },
+    "amazon subscription": {
+      "category": "Subscriptions",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Subscriptions": 1
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "Amazon Subscription"
+    },
+    "ulta beauty": {
+      "category": "Personal",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Personal": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Ulta Beauty"
+    },
+    "target": {
+      "category": "Groceries",
+      "confidence": 0.5,
+      "samples": 4,
+      "distribution": {
+        "Groceries": 2,
+        "Apartment": 2
+      },
+      "typical_card": "DISCOVER CC",
+      "sample_desc": "Target"
+    },
+    "ups store": {
+      "category": "Other",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Other": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "UPS Store"
+    },
+    "comida ej": {
+      "category": "Comidas EJ",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Comidas EJ": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Comida EJ"
+    },
+    "bp": {
+      "category": "Car",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Car": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "bp"
+    },
+    "publix": {
+      "category": "Groceries",
+      "confidence": 0.74,
+      "samples": 19,
+      "distribution": {
+        "Groceries": 14,
+        "Comida/Salida Amigos": 2,
+        "Other": 2,
+        "Personal": 1
+      },
+      "typical_card": "DISCOVER CC",
+      "sample_desc": "PUBLIX"
+    },
+    "burlington": {
+      "category": "Exceptions",
+      "confidence": 0.5,
+      "samples": 2,
+      "distribution": {
+        "Exceptions": 1,
+        "Apartment": 1
+      },
+      "typical_card": "DISCOVER CC",
+      "sample_desc": "Burlington"
+    },
+    "comida con ticket flipping": {
+      "category": "Comida/Salida Amigos",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Comida/Salida Amigos": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Comida con Ticket flipping"
+    },
+    "comida amigos": {
+      "category": "Comida/Salida Amigos",
+      "confidence": 1,
+      "samples": 3,
+      "distribution": {
+        "Comida/Salida Amigos": 3
+      },
+      "typical_card": "CHASE",
+      "sample_desc": "Comida Amigos"
+    },
+    "patientfi subscription": {
+      "category": "Subscriptions",
+      "confidence": 1,
+      "samples": 3,
+      "distribution": {
+        "Subscriptions": 3
+      },
+      "typical_card": "WELLS FARGO",
+      "sample_desc": "PatientFi Subscription"
+    },
+    "salida amigos": {
+      "category": "Comida/Salida Amigos",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Comida/Salida Amigos": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Salida amigos"
+    },
+    "parking amigos": {
+      "category": "Parking Afuera",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Parking Afuera": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Parking amigos"
+    },
+    "sunpass": {
+      "category": "Car",
+      "confidence": 1,
+      "samples": 6,
+      "distribution": {
+        "Car": 6
+      },
+      "typical_card": "CHASE CC",
+      "sample_desc": "SUNPASS"
+    },
+    "five below": {
+      "category": "Other",
+      "confidence": 0.5,
+      "samples": 2,
+      "distribution": {
+        "Other": 1,
+        "Apartment": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Five below"
+    },
+    "allapattah u gas": {
+      "category": "Car",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Car": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Allapattah U-gas"
+    },
+    "barbero q": {
+      "category": "Personal",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Personal": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Barbero Q"
+    },
+    "cena cumple kike": {
+      "category": "Exceptions",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Exceptions": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Cena Cumple Kike"
+    },
+    "almuerzo cumple q": {
+      "category": "Exceptions",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Exceptions": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Almuerzo Cumple Q"
+    },
+    "driver license renew": {
+      "category": "Other",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Other": 1
+      },
+      "typical_card": "DISCOVER CC",
+      "sample_desc": "DRIVER LICENSE RENEW"
+    },
+    "comida amigos comu": {
+      "category": "Comida/Salida Amigos",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Comida/Salida Amigos": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Comida Amigos Comu"
+    },
+    "llantas del auto": {
+      "category": "Car",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Car": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Llantas del auto"
+    },
+    "convivence": {
+      "category": "Comunidad",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Comunidad": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Convivence"
+    },
+    "ticket flipping": {
+      "category": "Ticket Flipping",
+      "confidence": 1,
+      "samples": 4,
+      "distribution": {
+        "Ticket Flipping": 4
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "TICKET FLIPPING"
+    },
+    "amazon fondo naranja": {
+      "category": "Exceptions",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Exceptions": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Amazon (fondo Naranja)"
+    },
+    "wayfair muebles apt": {
+      "category": "Apartment",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Apartment": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Wayfair - Muebles Apt"
+    },
+    "left from bonus": {
+      "category": "HEICO",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "HEICO": 1
+      },
+      "typical_card": "CHASE",
+      "sample_desc": "Left from Bonus"
+    },
+    "apartment rent": {
+      "category": "Apartment",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Apartment": 1
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "APARTMENT RENT"
+    },
+    "netflix subscription": {
+      "category": "Subscriptions",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Subscriptions": 1
+      },
+      "typical_card": "WELLS FARGO",
+      "sample_desc": "Netflix subscription"
+    },
+    "ross": {
+      "category": "Apartment",
+      "confidence": 0.5,
+      "samples": 2,
+      "distribution": {
+        "Apartment": 1,
+        "Shopping": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "ROSS"
+    },
+    "amazon": {
+      "category": "Apartment",
+      "confidence": 0.54,
+      "samples": 13,
+      "distribution": {
+        "Apartment": 7,
+        "Personal": 3,
+        "Shopping": 3
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Amazon"
+    },
+    "manicurist unhas pack": {
+      "category": "Shopping",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Shopping": 1
+      },
+      "typical_card": "CHASE CC",
+      "sample_desc": "Manicurist Unhas Pack"
+    },
+    "tj maxx": {
+      "category": "Apartment",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Apartment": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "TJ Maxx"
+    },
+    "amazon logo orig": {
+      "category": "Apartment",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Apartment": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Amazon (logo orig)"
+    },
+    "devolucion amazon": {
+      "category": "Apartment",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Apartment": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Devolucion Amazon"
+    },
+    "savings account": {
+      "category": "Savings",
+      "confidence": 1,
+      "samples": 7,
+      "distribution": {
+        "Savings": 7
+      },
+      "typical_card": "CHASE",
+      "sample_desc": "Savings Account"
+    },
+    "cursor ai": {
+      "category": "Business Q",
+      "confidence": 1,
+      "samples": 3,
+      "distribution": {
+        "Business Q": 3
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "Cursor AI"
+    },
+    "webshare proxy": {
+      "category": "Business Q",
+      "confidence": 1,
+      "samples": 4,
+      "distribution": {
+        "Business Q": 4
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "Webshare Proxy"
+    },
+    "chatgpt": {
+      "category": "Business Q",
+      "confidence": 1,
+      "samples": 2,
+      "distribution": {
+        "Business Q": 2
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "ChatGPT"
+    },
+    "wayfair": {
+      "category": "Apartment",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Apartment": 1
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "Wayfair"
+    },
+    "llc year filing 2x": {
+      "category": "Business Q",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Business Q": 1
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "LLC YEAR FILING 2x"
+    },
+    "lovable ai": {
+      "category": "Business Q",
+      "confidence": 1,
+      "samples": 2,
+      "distribution": {
+        "Business Q": 2
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "Lovable AI"
+    },
+    "flores para jess": {
+      "category": "Other",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Other": 1
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "Flores para Jess"
+    },
+    "atnt wifi": {
+      "category": "Apartment",
+      "confidence": 1,
+      "samples": 2,
+      "distribution": {
+        "Apartment": 2
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "ATNT WIFI"
+    },
+    "aws bill": {
+      "category": "Business Q",
+      "confidence": 1,
+      "samples": 2,
+      "distribution": {
+        "Business Q": 2
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "AWS Bill"
+    },
+    "plaid": {
+      "category": "Business Q",
+      "confidence": 1,
+      "samples": 2,
+      "distribution": {
+        "Business Q": 2
+      },
+      "typical_card": "AMEX CC",
+      "sample_desc": "Plaid"
+    },
+    "pay by phone": {
+      "category": "Parking Afuera",
+      "confidence": 1,
+      "samples": 2,
+      "distribution": {
+        "Parking Afuera": 2
+      },
+      "typical_card": "Chase Q",
+      "sample_desc": "Pay By Phone"
+    },
+    "lease insurance": {
+      "category": "Apartment",
+      "confidence": 1,
+      "samples": 2,
+      "distribution": {
+        "Apartment": 2
+      },
+      "typical_card": "Chase Q",
+      "sample_desc": "Lease Insurance"
+    },
+    "dmv renew drivel licence q": {
+      "category": "Other",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Other": 1
+      },
+      "typical_card": "Chase Q",
+      "sample_desc": "DMV Renew Drivel Licence Q"
+    },
+    "comida para casa kike": {
+      "category": "Other",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Other": 1
+      },
+      "typical_card": "CHASE CC",
+      "sample_desc": "Comida para Casa kike"
+    },
+    "take out": {
+      "category": "Take out/Uber Eats",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Take out/Uber Eats": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Take Out"
+    },
+    "sephora": {
+      "category": "Personal",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Personal": 1
+      },
+      "typical_card": "CHASE CC",
+      "sample_desc": "Sephora"
+    },
+    "pureology": {
+      "category": "Personal",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Personal": 1
+      },
+      "typical_card": "CHASE CC",
+      "sample_desc": "PUREOLOGY"
+    },
+    "cena amigos q": {
+      "category": "Comida/Salida Amigos",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Comida/Salida Amigos": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Cena Amigos Q"
+    },
+    "cena amigos comu": {
+      "category": "Comida/Salida Amigos",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Comida/Salida Amigos": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Cena Amigos Comu"
+    },
+    "apple subscription": {
+      "category": "Subscriptions",
+      "confidence": 1,
+      "samples": 2,
+      "distribution": {
+        "Subscriptions": 2
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Apple Subscription"
+    },
+    "chevron": {
+      "category": "Car",
+      "confidence": 1,
+      "samples": 2,
+      "distribution": {
+        "Car": 2
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "CHEVRON"
+    },
+    "maintenance kia": {
+      "category": "Car",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Car": 1
+      },
+      "typical_card": "CHASE",
+      "sample_desc": "Maintenance KIA"
+    },
+    "cvs": {
+      "category": "Apartment",
+      "confidence": 0.4,
+      "samples": 5,
+      "distribution": {
+        "Apartment": 2,
+        "Other": 2,
+        "Personal": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "CVS"
+    },
+    "dollar tree": {
+      "category": "Exceptions",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Exceptions": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Dollar Tree"
+    },
+    "walmart": {
+      "category": "Personal",
+      "confidence": 0.5,
+      "samples": 2,
+      "distribution": {
+        "Personal": 1,
+        "Exceptions": 1
+      },
+      "typical_card": "CHASE CC",
+      "sample_desc": "WALMART"
+    },
+    "cena cuestionario comu": {
+      "category": "Comunidad",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Comunidad": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Cena Cuestionario Comu"
+    },
+    "chase rewards pureology": {
+      "category": "Personal",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Personal": 1
+      },
+      "typical_card": "CHASE CC",
+      "sample_desc": "Chase rewards - Pureology"
+    },
+    "best buy": {
+      "category": "Shopping",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Shopping": 1
+      },
+      "typical_card": "CHASE CC",
+      "sample_desc": "BEST BUY"
+    },
+    "secrid": {
+      "category": "Shopping",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Shopping": 1
+      },
+      "typical_card": "CHASE CC",
+      "sample_desc": "SECRID"
+    },
+    "parking": {
+      "category": "Car",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Car": 1
+      },
+      "typical_card": "CHASE CC",
+      "sample_desc": "Parking"
+    },
+    "salida isa y enma": {
+      "category": "Comida/Salida Amigos",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Comida/Salida Amigos": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Salida Isa y Enma"
+    },
+    "cena isa y enma": {
+      "category": "Comida/Salida Amigos",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Comida/Salida Amigos": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Cena Isa y Enma"
+    },
+    "lagniappe": {
+      "category": "Comida/Salida Amigos",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Comida/Salida Amigos": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Lagniappe"
+    },
+    "kia lease": {
+      "category": "Car",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Car": 1
+      },
+      "typical_card": "CHASE",
+      "sample_desc": "KIA LEASE"
+    },
+    "nino piezas auto": {
+      "category": "Exceptions",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Exceptions": 1
+      },
+      "typical_card": "AMEX CC",
+      "sample_desc": "Nino Piezas Auto"
+    },
+    "gordon ransay burger": {
+      "category": "Exceptions",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Exceptions": 1
+      },
+      "typical_card": "AMEX CC",
+      "sample_desc": "Gordon Ransay burger"
+    },
+    "uber las vegas": {
+      "category": "Exceptions",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Exceptions": 1
+      },
+      "typical_card": "AMEX CC",
+      "sample_desc": "Uber Las Vegas"
+    },
+    "best buy regalo jess san v": {
+      "category": "Exceptions",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Exceptions": 1
+      },
+      "typical_card": "AMEX CC",
+      "sample_desc": "Best Buy (Regalo Jess San V.)"
+    },
+    "all you korean bbq": {
+      "category": "Exceptions",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Exceptions": 1
+      },
+      "typical_card": "AMEX CC",
+      "sample_desc": "All You Korean BBQ"
+    },
+    "grand canyon tour": {
+      "category": "Exceptions",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Exceptions": 1
+      },
+      "typical_card": "AMEX CC",
+      "sample_desc": "Grand Canyon Tour"
+    },
+    "simyo": {
+      "category": "Phone",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Phone": 1
+      },
+      "typical_card": "Chase Q",
+      "sample_desc": "Simyo"
+    },
+    "amazon prime video": {
+      "category": "Other",
+      "confidence": 1,
+      "samples": 2,
+      "distribution": {
+        "Other": 2
+      },
+      "typical_card": "Chase Q",
+      "sample_desc": "Amazon Prime Video"
+    },
+    "fiverr taxes": {
+      "category": "Exceptions",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Exceptions": 1
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "Fiverr Taxes"
+    },
+    "aria hotel las vegas": {
+      "category": "Exceptions",
+      "confidence": 1,
+      "samples": 2,
+      "distribution": {
+        "Exceptions": 2
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "Aria Hotel Las Vegas"
+    },
+    "american airlines las vegas": {
+      "category": "Exceptions",
+      "confidence": 1,
+      "samples": 2,
+      "distribution": {
+        "Exceptions": 2
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "American Airlines Las Vegas"
+    },
+    "llc dissolution": {
+      "category": "Exceptions",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Exceptions": 1
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "LLC Dissolution"
+    },
+    "chat gpt": {
+      "category": "Business Q",
+      "confidence": 1,
+      "samples": 2,
+      "distribution": {
+        "Business Q": 2
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "Chat GPT"
+    },
+    "opus clip": {
+      "category": "Business Q",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Business Q": 1
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "Opus Clip"
+    },
+    "storyshort ai": {
+      "category": "Exceptions",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Exceptions": 1
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "StoryShort AI"
+    },
+    "lovable": {
+      "category": "Business Q",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Business Q": 1
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "Lovable"
+    },
+    "mandalay las vegas": {
+      "category": "Exceptions",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Exceptions": 1
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "Mandalay Las VEgas"
+    },
+    "river landing parking": {
+      "category": "Apartment",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Apartment": 1
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "River Landing Parking"
+    },
+    "monthly service fee": {
+      "category": "Other",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Other": 1
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "Monthly Service Fee"
+    },
+    "rent": {
+      "category": "Apartment",
+      "confidence": 1,
+      "samples": 2,
+      "distribution": {
+        "Apartment": 2
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "Rent"
+    },
+    "ticketflipping": {
+      "category": "Ticket Flipping",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Ticket Flipping": 1
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "Ticketflipping"
+    },
+    "fpl": {
+      "category": "Apartment",
+      "confidence": 1,
+      "samples": 2,
+      "distribution": {
+        "Apartment": 2
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "FPL"
+    },
+    "ticketflipping reimbursement las vegas": {
+      "category": "Exceptions",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Exceptions": 1
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "Ticketflipping reimbursement Las Vegas"
+    },
+    "trader joes": {
+      "category": "Groceries",
+      "confidence": 1,
+      "samples": 2,
+      "distribution": {
+        "Groceries": 2
+      },
+      "typical_card": "DISCOVER CC",
+      "sample_desc": "TRADER JOES"
+    },
+    "casa martinez": {
+      "category": "Groceries",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Groceries": 1
+      },
+      "typical_card": "DISCOVER CC",
+      "sample_desc": "CASA MARTINEZ"
+    },
+    "raisin canes": {
+      "category": "Comida/Salida Amigos",
+      "confidence": 0.5,
+      "samples": 2,
+      "distribution": {
+        "Comida/Salida Amigos": 1,
+        "Comidas EJ": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Raisin Canes"
+    },
+    "corte de pelo": {
+      "category": "Personal",
+      "confidence": 1,
+      "samples": 2,
+      "distribution": {
+        "Personal": 2
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "CORTE DE PELO"
+    },
+    "ppole": {
+      "category": "Comida/Salida Amigos",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Comida/Salida Amigos": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "PPOLE"
+    },
+    "san gines": {
+      "category": "Comidas EJ",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Comidas EJ": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "San Gines"
+    },
+    "gelato ej": {
+      "category": "Comidas EJ",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Comidas EJ": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Gelato EJ"
+    },
+    "raccoon coffee": {
+      "category": "Take out/Uber Eats",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Take out/Uber Eats": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Raccoon coffee"
+    },
+    "parchment": {
+      "category": "Other",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Other": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Parchment"
+    },
+    "subway": {
+      "category": "Exceptions",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Exceptions": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Subway"
+    },
+    "in n out": {
+      "category": "Exceptions",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Exceptions": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "In-N-Out"
+    },
+    "lyft": {
+      "category": "Exceptions",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Exceptions": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Lyft"
+    },
+    "aria patisserie": {
+      "category": "Exceptions",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Exceptions": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "ARIA Patisserie"
+    },
+    "recuerdos lv": {
+      "category": "Shopping",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Shopping": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Recuerdos LV"
+    },
+    "fat tuesday": {
+      "category": "Exceptions",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Exceptions": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Fat Tuesday"
+    },
+    "kaplan capital llc": {
+      "category": "Business Q",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Business Q": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Kaplan Capital LLC"
+    },
+    "cafe en w las vegas": {
+      "category": "Take out/Uber Eats",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Take out/Uber Eats": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Cafe en W Las Vegas"
+    },
+    "desayuno en lv": {
+      "category": "Exceptions",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Exceptions": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Desayuno en LV"
+    },
+    "cookidoo subscription": {
+      "category": "Subscriptions",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Subscriptions": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Cookidoo Subscription"
+    },
+    "yesstyle": {
+      "category": "Personal",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Personal": 1
+      },
+      "typical_card": "CHASE CC",
+      "sample_desc": "YESSTYLE"
+    },
+    "netflix": {
+      "category": "Subscriptions",
+      "confidence": 1,
+      "samples": 2,
+      "distribution": {
+        "Subscriptions": 2
+      },
+      "typical_card": "WELLS FARGO",
+      "sample_desc": "Netflix"
+    },
+    "forchics": {
+      "category": "Personal",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Personal": 1
+      },
+      "typical_card": "CHASE CC",
+      "sample_desc": "FORCHICS"
+    },
+    "kipling": {
+      "category": "Shopping",
+      "confidence": 1,
+      "samples": 2,
+      "distribution": {
+        "Shopping": 2
+      },
+      "typical_card": "CHASE CC",
+      "sample_desc": "KIPLING"
+    },
+    "vs": {
+      "category": "Shopping",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Shopping": 1
+      },
+      "typical_card": "CHASE CC",
+      "sample_desc": "VS"
+    },
+    "geico insurance": {
+      "category": "Car",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Car": 1
+      },
+      "typical_card": "DISCOVER CC",
+      "sample_desc": "GEICO Insurance"
+    },
+    "comida las vegas": {
+      "category": "Comidas EJ",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Comidas EJ": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Comida Las Vegas"
+    },
+    "uber del aeropuerto": {
+      "category": "Exceptions",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Exceptions": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Uber del Aeropuerto"
+    },
+    "pedidos ya": {
+      "category": "Exceptions",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Exceptions": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Pedidos YA"
+    },
+    "ojo de agua": {
+      "category": "Take out/Uber Eats",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Take out/Uber Eats": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Ojo de Agua"
+    },
+    "shell": {
+      "category": "Other",
+      "confidence": 0.5,
+      "samples": 2,
+      "distribution": {
+        "Other": 1,
+        "Car": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Shell"
+    },
+    "rendi dev": {
+      "category": "Business Q",
+      "confidence": 1,
+      "samples": 2,
+      "distribution": {
+        "Business Q": 2
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "RENDI.DEV"
+    },
+    "sushi cena mateo": {
+      "category": "Comida/Salida Amigos",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Comida/Salida Amigos": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Sushi Cena Mateo"
+    },
+    "almuerzo salva maria": {
+      "category": "Comida/Salida Amigos",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Comida/Salida Amigos": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Almuerzo Salva/Maria"
+    },
+    "cena despues de eucaristia": {
+      "category": "Comidas EJ",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Comidas EJ": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Cena despues de Eucaristia"
+    },
+    "parking miami beach": {
+      "category": "Parking Afuera",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Parking Afuera": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Parking Miami Beach"
+    },
+    "kia finance": {
+      "category": "Car",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Car": 1
+      },
+      "typical_card": "CHASE",
+      "sample_desc": "KIA FINANCE"
+    },
+    "goose creek": {
+      "category": "Apartment",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Apartment": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Goose Creek"
+    },
+    "hobby lobby": {
+      "category": "Apartment",
+      "confidence": 0.5,
+      "samples": 2,
+      "distribution": {
+        "Apartment": 1,
+        "Exceptions": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Hobby Lobby"
+    },
+    "pago isa": {
+      "category": "Apartment",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Apartment": 1
+      },
+      "typical_card": "CHASE",
+      "sample_desc": "Pago Isa"
+    },
+    "usps taxes": {
+      "category": "Other",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Other": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "USPS - TAXES"
+    },
+    "las vegas hotel": {
+      "category": "Exceptions",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Exceptions": 1
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "Las vegas hotel"
+    },
+    "domain app cantos": {
+      "category": "Business Q",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Business Q": 1
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "domain app cantos"
+    },
+    "stem opt application fee": {
+      "category": "Exceptions",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Exceptions": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "STEM OPT APPLICATION FEE"
+    },
+    "apartment insurance": {
+      "category": "Apartment",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Apartment": 1
+      },
+      "typical_card": "Chase Q",
+      "sample_desc": "Apartment insurance"
+    },
+    "whole foods": {
+      "category": "Groceries",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Groceries": 1
+      },
+      "typical_card": "Chase Q",
+      "sample_desc": "whole foods"
+    },
+    "webshare proxies": {
+      "category": "Business Q",
+      "confidence": 1,
+      "samples": 2,
+      "distribution": {
+        "Business Q": 2
+      },
+      "typical_card": "Chase Q",
+      "sample_desc": "Webshare proxies"
+    },
+    "vegas casino": {
+      "category": "Exceptions",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Exceptions": 1
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "VEGAS CASINO"
+    },
+    "tax software": {
+      "category": "Business Q",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Business Q": 1
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "tax software"
+    },
+    "kling ai": {
+      "category": "Business Q",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Business Q": 1
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "kling ai"
+    },
+    "runway": {
+      "category": "Business Q",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Business Q": 1
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "RUNWAY"
+    },
+    "atnt": {
+      "category": "Apartment",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Apartment": 1
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "ATNT"
+    },
+    "uploadpost api": {
+      "category": "Business Q",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Business Q": 1
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "uploadpost API"
+    },
+    "text verified": {
+      "category": "Business Q",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Business Q": 1
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "Text verified"
+    },
+    "runpod": {
+      "category": "Business Q",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Business Q": 1
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "Runpod"
+    },
+    "thunder co": {
+      "category": "Business Q",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Business Q": 1
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "Thunder Co"
+    },
+    "7eleven": {
+      "category": "Other",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Other": 1
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "7eleven"
+    },
+    "vidu api": {
+      "category": "Business Q",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Business Q": 1
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "Vidu API"
+    },
+    "fal ai": {
+      "category": "Business Q",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Business Q": 1
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "Fal AI"
+    },
+    "spintax jess 2023 taxes": {
+      "category": "Other",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Other": 1
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "Spintax jess 2023 taxes"
+    },
+    "11labs io": {
+      "category": "Business Q",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Business Q": 1
+      },
+      "typical_card": "BUSINESS Q",
+      "sample_desc": "11labs io"
+    },
+    "ladder": {
+      "category": "Subscriptions",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Subscriptions": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "LADDER"
+    },
+    "amerant arena food": {
+      "category": "Comidas EJ",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Comidas EJ": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Amerant Arena Food"
+    },
+    "rice uber eats": {
+      "category": "Take out/Uber Eats",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Take out/Uber Eats": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "RICE Uber Eats"
+    },
+    "uber kike con papa": {
+      "category": "Car",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Car": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Uber kike con Papa"
+    },
+    "aromas del peru": {
+      "category": "Comidas EJ",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Comidas EJ": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Aromas del Peru"
+    },
+    "parqueo aromas del peru": {
+      "category": "Parking Afuera",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Parking Afuera": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Parqueo Aromas del Peru"
+    },
+    "multa parqueo tesla": {
+      "category": "Parking Afuera",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Parking Afuera": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Multa parqueo Tesla"
+    },
+    "parking tesla en casa": {
+      "category": "Exceptions",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Exceptions": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Parking Tesla en Casa"
+    },
+    "almuerzo con comu": {
+      "category": "Comida/Salida Amigos",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Comida/Salida Amigos": 1
+      },
+      "typical_card": "APPLE CC",
+      "sample_desc": "Almuerzo con Comu"
+    },
+    "target deep fry reimbursement": {
+      "category": "Apartment",
+      "confidence": 1,
+      "samples": 1,
+      "distribution": {
+        "Apartment": 1
+      },
+      "typical_card": "CHASE CC",
+      "sample_desc": "Target - Deep Fry Reimbursement"
+    }
+  }
+}

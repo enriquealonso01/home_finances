@@ -1,0 +1,20 @@
+{
+  "name": "home_finances",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "verify-sheets": "node scripts/verify_sheets.js",
+    "mcp-sheets": "node mcps/sheets/server.js",
+    "mcp-plaid": "node mcps/plaid/server.js",
+    "link-server": "node mcps/plaid/link-server.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "csv-parse": "^6.2.1",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "googleapis": "^173.0.0",
+    "plaid": "^42.2.0"
+  }
+}
