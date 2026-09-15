@@ -2,106 +2,149 @@
   "version": 1,
   "accounts": [
     {
-      "account_id": "LzAoogjxnMS3QPwnJqaougDnOZxeKzUNqqMnD",
+      "account_id": "REDACTED_LzAo...",
       "source": "plaid",
       "institution": "Chase",
       "plaid_name": "TOTAL CHECKING",
-      "mask": "2119",
+      "mask": "0000",
       "subtype": "checking",
-      "labels": { "family": "CHASE", "llc": null },
+      "labels": {
+        "family": "CHASE",
+        "llc": null
+      },
       "is_business": false,
-      "notes": "Personal checking. HEICO paychecks deposit here; savings transfers originate here."
+      "notes": "Example note"
     },
     {
-      "account_id": "1pYEEdPgxrTmvNMyEYjQu9ALQzYOZnF0PPve8",
+      "account_id": "REDACTED_1pYE...",
       "source": "plaid",
       "institution": "Chase",
       "plaid_name": "CREDIT CARD",
-      "plaid_official_name": "Ultimate Rewards®",
-      "mask": "2230",
+      "plaid_official_name": "Ultimate Rewards\u00ae",
+      "mask": "0000",
       "subtype": "credit card",
-      "labels": { "family": "CHASE CC", "llc": null },
+      "labels": {
+        "family": "CHASE CC",
+        "llc": null
+      },
       "is_business": false,
-      "notes": "Personal Chase Sapphire/Freedom. Variable retail purchases."
+      "notes": "Example note"
     },
     {
-      "account_id": "waXyyz8g5Lhj3e4zXNAyCX5870jLDNUOQQ4j3",
+      "account_id": "REDACTED_waXy...",
       "source": "plaid",
       "institution": "Chase",
       "plaid_name": "BUS COMPLETE CHK",
-      "mask": "2502",
+      "mask": "0000",
       "subtype": "checking",
-      "labels": { "family": "Chase Q", "llc": "P&S CHK 2502" },
+      "labels": {
+        "family": "Chase Q",
+        "llc": "P&S CHK 2502"
+      },
       "is_business": true,
-      "notes": "Chase Business Checking for Proven & Solved LLC. Pays rent, parking, lease insurance, etc. Small debit-card purchases too."
+      "notes": "Example note"
     },
     {
-      "account_id": "6pYVV1KLQwTypRz0OYgXs6YARNpDK5Uq88J4p",
+      "account_id": "REDACTED_6pYV...",
       "source": "plaid",
       "institution": "Chase",
       "plaid_name": "E. ALONSO",
-      "plaid_official_name": "Ultimate Rewards®",
-      "mask": "5441",
+      "plaid_official_name": "Ultimate Rewards\u00ae",
+      "mask": "0000",
       "subtype": "credit card",
-      "labels": { "family": "BUSINESS Q", "llc": "P&S Credit 5441" },
+      "labels": {
+        "family": "BUSINESS Q",
+        "llc": "P&S Credit 5441"
+      },
       "is_business": true,
-      "notes": "Chase Ink Business credit card. Main LLC spend: software subs, AWS, business travel."
+      "notes": "Example note"
     },
     {
-      "account_id": "Dz1ooaBmD0Sam3qxgKnvSVjkd0obJqUM55a9d",
+      "account_id": "REDACTED_Dz1o...",
       "source": "plaid",
       "institution": "Chase",
       "plaid_name": "CHASE SAVINGS",
-      "mask": "5650",
+      "mask": "0000",
       "subtype": "savings",
-      "labels": { "family": null, "llc": null },
+      "labels": {
+        "family": null,
+        "llc": null
+      },
       "is_business": false,
-      "notes": "Personal savings. Receives 'Savings Account' transfer rows from CHASE checking; no purchases."
+      "notes": "Example note"
     },
     {
-      "account_id": "O3D3rDgyRrU3pOKXNEJecqN3ay5aOzspnMEk7",
+      "account_id": "REDACTED_O3D3...",
       "source": "plaid",
       "institution": "Marcus by Goldman Sachs",
       "plaid_name": "2026 LLC Taxes",
-      "mask": "5485",
+      "mask": "0000",
       "subtype": "savings",
-      "labels": { "family": null, "llc": null },
+      "labels": {
+        "family": null,
+        "llc": null
+      },
       "is_business": false,
-      "notes": "Marcus savings bucket for LLC tax set-asides. Receives transfers from Chase; transactions skipped (no purchases happen here)."
+      "notes": "Example note"
     },
     {
-      "account_id": "Mq6q06mBM0cNpZV4v8agUbaOX1DXKeC0JQr1J",
+      "account_id": "REDACTED_Mq6q...",
       "source": "plaid",
       "institution": "Marcus by Goldman Sachs",
       "plaid_name": "1K Emergency Fund",
-      "mask": "5498",
+      "mask": "0000",
       "subtype": "savings",
-      "labels": { "family": null, "llc": null },
+      "labels": {
+        "family": null,
+        "llc": null
+      },
       "is_business": false,
-      "notes": "Marcus emergency fund. Transactions skipped."
+      "notes": "Example note"
     },
     {
-      "account_id": "0ejqrj63yMcO65OB9w01sPmyz7E779IBZmawpv",
+      "account_id": "REDACTED_0ejq...",
       "source": "plaid",
       "institution": "Discover",
       "plaid_name": "Discover it Card",
       "plaid_official_name": "Discover it Card",
-      "mask": "7198",
+      "mask": "0000",
       "subtype": "credit card",
-      "labels": { "family": "DISCOVER CC", "llc": null },
+      "labels": {
+        "family": "DISCOVER CC",
+        "llc": null
+      },
       "is_business": false,
-      "notes": "Personal Discover it card. Linked 2026-06-28. Plaid history ~90 days back."
+      "notes": "Example note"
     },
     {
-      "account_id": "apple_card_csv",
+      "account_id": "REDACTED_yze5...",
+      "source": "plaid",
+      "institution": "Citibank",
+      "plaid_name": "Citi\u00ae / AAdvantage Business\u2122 World Elite Mastercard\u00ae",
+      "plaid_official_name": "Citi\u00ae / AAdvantage Business\u2122 World Elite Mastercard\u00ae",
+      "mask": "0000",
+      "subtype": "credit card",
+      "item_id": "8qvgbRBQVzT6xNL4jDopCnPOL1pg1Df1A60Qr",
+      "labels": {
+        "family": null,
+        "llc": "Citi AA Biz 5836"
+      },
+      "is_business": true,
+      "notes": "Example note"
+    },
+    {
+      "account_id": "REDACTED_appl...",
       "source": "csv",
       "institution": "Apple Card",
       "plaid_name": null,
-      "mask": null,
+      "mask": "0000",
       "subtype": "credit card",
-      "labels": { "family": "APPLE CC", "llc": null },
+      "labels": {
+        "family": "APPLE CC",
+        "llc": null
+      },
       "is_business": false,
-      "notes": "Apple Card. No Plaid support; transactions imported via CSV dropped in Drive folder APPLE_CARD_DRIVE_FOLDER_ID."
+      "notes": "Example note"
     }
   ],
   "unmapped_labels_pending_link": [
