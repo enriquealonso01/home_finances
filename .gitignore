@@ -19,3 +19,4 @@ build/
 *.swp
 .DS_Store
 Thumbs.db
+config/accounts.json
