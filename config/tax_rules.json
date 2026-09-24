@@ -1,0 +1,100 @@
+{
+  "version": 1,
+  "name": "PSConsulting LLC — Schedule C tax rules (layer 2)",
+  "source_plan": "TAX-PLAN.md §4 / §5",
+  "tax_year": 2026,
+  "entity": "Proven & Solved LLC (single-member, Schedule C)",
+  "home_office": {
+    "method": "actual (pending CPA confirm; Enrique confirmed 100% business-use of apartment)",
+    "business_use_pct": 100,
+    "covers": ["rent", "parking (River Landing / office)", "FPL electricity", "renter utilities"],
+    "schedule_c_line": "30"
+  },
+  "schedule_c_lines": {
+    "8":  { "name": "Advertising", "turbotax": "Advertising" },
+    "9":  { "name": "Car and truck expenses", "turbotax": "Car expenses" },
+    "10": { "name": "Commissions and fees", "turbotax": "Commissions and fees" },
+    "11": { "name": "Contract labor", "turbotax": "Contract labor" },
+    "13": { "name": "Depreciation / §179 (equipment candidates)", "turbotax": "Assets / Depreciation" },
+    "15": { "name": "Insurance (business liability/lease; vehicle insurance → 9)", "turbotax": "Insurance" },
+    "16": { "name": "Interest (business credit card)", "turbotax": "Interest" },
+    "17": { "name": "Legal and professional", "turbotax": "Legal and professional services" },
+    "18": { "name": "Office expense", "turbotax": "Office expenses" },
+    "21": { "name": "Repairs and maintenance", "turbotax": "Repairs and maintenance" },
+    "22": { "name": "Supplies", "turbotax": "Supplies" },
+    "23": { "name": "Taxes and licenses", "turbotax": "Taxes and licenses" },
+    "24a": { "name": "Travel", "turbotax": "Travel" },
+    "24b": { "name": "Deductible meals (50%)", "turbotax": "Meals" },
+    "25": { "name": "Utilities (business phone/internet)", "turbotax": "Utilities" },
+    "27a": { "name": "Other expenses (Part V itemized)", "turbotax": "Other expenses" },
+    "30": { "name": "Home office (Form 8829 or simplified)", "turbotax": "Home office interview" },
+    "P1": { "name": "Part I Line 1 — Gross receipts", "turbotax": "Gross receipts / sales" },
+    "P3": { "name": "Part III Line 38 — Purchases (COGS)", "turbotax": "Cost of goods sold" }
+  },
+  "type_vocab": ["Expense", "COGS", "Income", "Refund", "Transfer", "TaxSetAside"],
+  "bus_use_vocab": ["business", "personal", "mixed-review"],
+  "category_map": {
+    "Home Office - Rent":      { "line": "30",  "turbotax": "Home office interview",       "type": "Expense", "bus_use": "business", "pct": 100 },
+    "Home Office - Utilities": { "line": "30",  "turbotax": "Home office interview",       "type": "Expense", "bus_use": "business", "pct": 100 },
+    "Internet & Phone":        { "line": "25",  "turbotax": "Utilities",                   "type": "Expense", "bus_use": "business", "pct": 100, "note": "AT&T 100% business per Enrique 2026-09-11" },
+    "Software & Subscriptions":{ "line": "27a", "turbotax": "Other expenses", "part_v": "Software subscriptions", "type": "Expense", "bus_use": "business", "pct": 100 },
+    "Taxes & Licenses":        { "line": "23",  "turbotax": "Taxes and licenses",          "type": "Expense", "bus_use": "business", "pct": 100 },
+    "Car & Transportation":    { "line": "9",   "turbotax": "Car expenses",                "type": "Expense", "bus_use": "business", "pct": 100, "note": "office parking + business rides; mileage log separate" },
+    "Travel":                  { "line": "24a", "turbotax": "Travel",                      "type": "Expense", "bus_use": "business", "pct": 100 },
+    "Meals (50%)":             { "line": "24b", "turbotax": "Meals",                       "type": "Expense", "bus_use": "business", "pct": 50 },
+    "Advertising":             { "line": "8",   "turbotax": "Advertising",                 "type": "Expense", "bus_use": "business", "pct": 100 },
+    "Bank & Merchant Fees":    { "line": "27a", "turbotax": "Other expenses", "part_v": "Bank and merchant fees", "type": "Expense", "bus_use": "business", "pct": 100 },
+    "Office Supplies":         { "line": "18",  "turbotax": "Office expenses",             "type": "Expense", "bus_use": "business", "pct": 100 },
+    "Legal & Professional":    { "line": "17",  "turbotax": "Legal and professional services", "type": "Expense", "bus_use": "business", "pct": 100 },
+    "Repairs & Maintenance":   { "line": "21",  "turbotax": "Repairs and maintenance",     "type": "Expense", "bus_use": "business", "pct": 100 },
+    "Supplies":                { "line": "22",  "turbotax": "Supplies",                    "type": "Expense", "bus_use": "business", "pct": 100 },
+    "Business Insurance":      { "line": "15",  "turbotax": "Insurance",                   "type": "Expense", "bus_use": "business", "pct": 100 },
+    "Business Interest":       { "line": "16",  "turbotax": "Interest",                    "type": "Expense", "bus_use": "business", "pct": 100 },
+    "Equipment":               { "line": "13",  "turbotax": "Assets / Depreciation",       "type": "Expense", "bus_use": "business", "pct": 100 },
+    "Contract Labor":          { "line": "11",  "turbotax": "Contract labor",              "type": "Expense", "bus_use": "business", "pct": 100 },
+    "Platform Fees":           { "line": "10",  "turbotax": "Commissions and fees",        "type": "Expense", "bus_use": "business", "pct": 100 },
+    "Shopify":                 { "line": "P1",  "turbotax": "Gross receipts / sales",      "type": "Income",  "bus_use": "business", "pct": 100 },
+    "Refund / Credit":         { "line": "P1",  "turbotax": "Gross receipts / sales (contra)", "type": "Refund", "bus_use": "business", "pct": 100 },
+    "Needs Review":            { "review": true }
+  },
+  "internal_category_to_sheet_category": {
+    "HomeOffice-Rent": "Home Office - Rent",
+    "HomeOffice-Utilities": "Home Office - Utilities",
+    "HomeOffice-Utilities-Phone": "Internet & Phone",
+    "Parking": "Car & Transportation",
+    "Subscriptions": "Software & Subscriptions",
+    "Income-Ticketflipping": "Ticketflipping",
+    "Income-Shopify": "Shopify",
+    "Income-Facebook": "Facebook",
+    "Income-Other": "Needs Review"
+  },
+  "merchant_overrides": [
+    {
+      "match": "^autods",
+      "subscription_hint": "(subscription|saas|monthly|plan|premium)",
+      "expense": { "line": "27a", "turbotax": "Other expenses", "part_v": "Software subscriptions", "type": "Expense", "bus_use": "business", "pct": 100 },
+      "default": { "line": "P3", "turbotax": "Cost of goods sold", "type": "COGS", "bus_use": "business", "pct": 100, "estimate": true },
+      "note": "Per-order fulfillment charges → COGS Part III L38 (estimate until AutoDS order report confirms); only explicit subscription/SaaS charges → 27a. TAX-PLAN §5.1/§5.3."
+    },
+    {
+      "match": "refund|/credit|reversal",
+      "any_category": true,
+      "default": { "line": "P1", "turbotax": "Gross receipts / sales (contra)", "type": "Refund", "bus_use": "business", "pct": 100 }
+    },
+    {
+      "match": "^(sephora|ulta|total wine|seatgeek|mancave for men|cmx cinemas|publix|trader joe|whole foods|walmart|target)\\b|atm withdrawal|zelle payment to|date tbd",
+      "any_category": true,
+      "default": { "bus_use": "personal", "review": true, "exclude_from_schedule_c": true, "note": "personal-spend / unknown-date flag on business card" }
+    }
+  ],
+  "income_rules": [
+    { "match": "ticket\\s*flipp|^lysted",  "source": "Ticketflipping", "line": "P1", "type": "Income", "bus_use": "business" },
+    { "match": "shopify",                  "source": "Shopify",        "line": "P1", "type": "Income", "bus_use": "business" },
+    { "match": "facebook",                 "source": "Facebook",       "line": "P1", "type": "Income", "bus_use": "business" },
+    { "match": "stripe|paypal",            "source": "Client payments","line": "P1", "type": "Income", "bus_use": "business" }
+  ],
+  "defaults": {
+    "unmapped_category": { "review": true, "type": "Expense", "bus_use": "mixed-review" },
+    "plaid_pfc_income":  { "line": "P1", "type": "Income", "bus_use": "business", "review": true }
+  }
+}

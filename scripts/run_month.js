@@ -56,12 +56,19 @@ const plaidTxns = [];
 for (const [item_id, t] of Object.entries(tokens)) {
   let offset = 0; const count = 500;
   while (true) {
-    const resp = await plaidApi.transactionsGet({
-      access_token: t.access_token,
-      start_date: startDate,
-      end_date: endDate,
-      options: { offset, count },
-    });
+    let resp;
+    try {
+      resp = await plaidApi.transactionsGet({
+        access_token: t.access_token,
+        start_date: startDate,
+        end_date: endDate,
+        options: { offset, count },
+      });
+    } catch (e) {
+      const code = e.response?.data?.error_code || '';
+      if (code === 'ITEM_LOGIN_REQUIRED') { console.warn(`  SKIP item ${item_id.slice(0, 8)} — ITEM_LOGIN_REQUIRED (needs re-auth via Link)`); break; }
+      throw e;
+    }
     plaidTxns.push(...resp.data.transactions);
     if (resp.data.transactions.length < count) break;
     offset += count;
@@ -593,10 +600,14 @@ const sheets = google.sheets({ version: 'v4', auth });
 const famMeta = await sheets.spreadsheets.get({ spreadsheetId: process.env.FAMILY_SHEET_ID });
 const targetSheet = famMeta.data.sheets.find(s => s.properties.title === familyTab);
 if (!targetSheet) {
-  console.error(`Tab "${familyTab}" not found in family sheet`);
-  process.exit(1);
-}
-
+  // LLC-only run: family tab missing → still do the LLC writes, skip family.
+  if (llcOps.length > 0) {
+    console.log(`Tab "${familyTab}" not in family sheet — doing LLC writes only.`);
+  } else {
+    console.error(`Tab "${familyTab}" not found in family sheet`);
+    process.exit(1);
+  }
+} else {
 // Read existing rows UNFORMATTED so we get native number types for dates / amounts.
 console.log(`\nReading existing data in "${familyTab}"…`);
 const existing = await sheets.spreadsheets.values.get({
@@ -701,61 +712,85 @@ const batchResp = await sheets.spreadsheets.batchUpdate({
   },
 });
 console.log(`  wrote ${cellRows.length} rows to "${familyTab}" (rows ${writeStartRow}–${writeStartRow + cellRows.length - 1})`);
+} // end family-tab-present branch
 
 if (familyOnly) {
-  console.log('\n--family-only: skipping LLC sheet writes (LLC appends are not idempotent).');
+  console.log('\n--family-only: skipping LLC writes.');
   console.log('\nDone.');
   process.exit(0);
 }
 
 console.log(`\nProcessing ${llcOps.length} LLC ops…`);
-const llcDescCol = (await sheets.spreadsheets.values.get({
-  spreadsheetId: process.env.LLC_SHEET_ID,
-  range: `LLC Transactions!D:D`,
-})).data.values || [];
+// v2 (2026-09-21): write directly to Expenses/Revenue tabs (LLC Transactions DEPRECATED)
+const { LLC_TAB_HEADERS, llcRowFromTxn } = await import('./llc_tabs.js');
 
-const llcAppends = [];
-let tmplFilled = 0;
-const batchData = [];
-const filledRows = new Set();
+// idempotency: collect existing Ref/IDs
+const existingIds = new Set();
+for (const tab of ['Expenses', 'Revenue']) {
+  const res = await sheets.spreadsheets.values.get({
+    spreadsheetId: process.env.LLC_SHEET_ID, range: `${tab}!J2:J`, valueRenderOption: 'UNFORMATTED_VALUE',
+  });
+  for (const r of (res.data.values || [])) if (r[0]) existingIds.add(String(r[0]));
+}
+
+// classify each op → Sch C line + revenue vs expense, reusing tax_rules mappings
+const taxRulesLocal = JSON.parse(fs.readFileSync(path.join(ROOT, 'config/tax_rules.json'), 'utf-8'));
+const catMap = taxRulesLocal.category_map || {};
+function classifyOp(op) {
+  const desc = op.appendRow[2] || '';
+  const internal = op.appendRow[3] || '';
+  // try category map by internal category name
+  const mapped = catMap[internal] || catMap[internal.toLowerCase()] || null;
+  return { mapped };
+}
+
+const newExpenses = [], newRevenue = [];
 for (const op of llcOps) {
-  if (op.template_key && op.template_pattern) {
-    let rowIdx = null;
-    for (let i = 0; i < llcDescCol.length; i++) {
-      if (filledRows.has(i + 1)) continue;
-      const cell = (llcDescCol[i][0] || '');
-      if (op.template_pattern.test(cell)) { rowIdx = i + 1; break; }
-    }
-    if (rowIdx) {
-      filledRows.add(rowIdx);
-      batchData.push({ range: `LLC Transactions!B${rowIdx}`, values: [[op.appendRow[0]]] });
-      batchData.push({ range: `LLC Transactions!C${rowIdx}`, values: [[op.appendRow[1]]] });
-      batchData.push({ range: `LLC Transactions!F${rowIdx}`, values: [[op.appendRow[4]]] });
-      tmplFilled++;
-      console.log(`  TPL ${op.template_key} → row ${rowIdx} (${llcDescCol[rowIdx-1][0]})`);
-      continue;
-    }
-  }
-  llcAppends.push(op.appendRow);
+  const t = op.txn;
+  const id = t.raw?.transaction_id ? `plaid:${t.raw.transaction_id}` : '';
+  if (id && existingIds.has(id)) continue;
+  const { mapped } = classifyOp(op);
+  const isRevenue = t.type === 'Profit';
+  const refundOfExpense = isRevenue && /refund|credit|reimburse/i.test(String(op.appendRow[2] || ''));
+  const scline = isRevenue ? (refundOfExpense ? '' : 'P1') : (mapped?.line ?? '');
+  const sclabel = refundOfExpense ? 'Refund of expense (contra)'
+    : isRevenue ? 'Gross receipts / sales' : (mapped?.label ?? '');
+  const notes = refundOfExpense ? 'refund of business expense — confirm offset line'
+    : mapped ? '' : 'unmapped category — needs Sch C line';
+  const row = {
+    date: t.date,
+    desc: op.appendRow[2],
+    amount: Number(t.amount),
+    scline: String(scline),
+    sclabel,
+    source: /chase/i.test(t.account.institution) ? 'Chase' : /citi/i.test(t.account.institution) ? 'Citi' : t.account.institution,
+    card: t.account?.labels?.llc ?? '',
+    review: refundOfExpense ? 'Y' : (mapped ? '' : 'Y'),
+    notes,
+    id,
+    personal: false,
+  };
+  (isRevenue ? newRevenue : newExpenses).push(row);
 }
 
-if (batchData.length > 0) {
-  await sheets.spreadsheets.values.batchUpdate({
-    spreadsheetId: process.env.LLC_SHEET_ID,
-    requestBody: { valueInputOption: 'USER_ENTERED', data: batchData },
-  });
-  console.log(`Filled ${tmplFilled} templated row(s) in LLC sheet.`);
-}
+const toRowValues = x => [[
+  typeof x.date === 'string' ? x.date : new Date(Date.UTC(1899, 11, 30) + Number(x.date) * 86400000).toISOString().slice(0, 10),
+  x.desc, x.amount, x.scline, x.sclabel, x.source, x.card, x.review, x.notes, x.id, x.personal ? 'TRUE' : '',
+]];
 
-if (llcAppends.length > 0) {
-  const llcResp = await sheets.spreadsheets.values.append({
-    spreadsheetId: process.env.LLC_SHEET_ID,
-    range: `LLC Transactions!B:F`,
-    valueInputOption: 'USER_ENTERED',
-    insertDataOption: 'INSERT_ROWS',
-    requestBody: { values: llcAppends },
+if (newExpenses.length) {
+  await sheets.spreadsheets.values.append({
+    spreadsheetId: process.env.LLC_SHEET_ID, range: 'Expenses!A1', valueInputOption: 'USER_ENTERED',
+    insertDataOption: 'INSERT_ROWS', requestBody: { values: newExpenses.flatMap(toRowValues) },
   });
-  console.log(`Appended ${llcAppends.length} non-template LLC row(s): ${llcResp.data.updates.updatedRange}`);
 }
+if (newRevenue.length) {
+  await sheets.spreadsheets.values.append({
+    spreadsheetId: process.env.LLC_SHEET_ID, range: 'Revenue!A1', valueInputOption: 'USER_ENTERED',
+    insertDataOption: 'INSERT_ROWS', requestBody: { values: newRevenue.flatMap(toRowValues) },
+  });
+}
+console.log(`Appended ${newExpenses.length} expense + ${newRevenue.length} revenue row(s) to Expenses/Revenue tabs.`);
+console.log('Now run: node scripts/build_expenses_revenue.js --apply  (dedup/sort + Summary refresh)');
 
 console.log('\nDone.');
