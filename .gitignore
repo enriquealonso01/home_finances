@@ -20,3 +20,4 @@ build/
 .DS_Store
 Thumbs.db
 config/accounts.json
+scripts/tmp/
