@@ -25,7 +25,7 @@ const accounts = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'config/acc
 const EPOCH = Date.UTC(1899, 11, 30);
 
 const HEADERS = ['Date', 'Description', 'Amount', 'Sch C Line', 'Sch C Label',
-  'Source', 'Card', 'Review', 'Notes', 'Ref/ID', 'Personal'];
+  'Source', 'Card', 'Review', 'Notes', 'Ref/ID', 'Personal', 'Project'];
 
 // ---- vendor alias table for dedup -------------------------------------------
 const ALIASES = [
@@ -59,7 +59,7 @@ const sheets = await sheetsClient();
 // ---- 1. READ current tabs (source of truth) ----------------------------------
 async function readTab(tab) {
   const res = await sheets.spreadsheets.values.get({
-    spreadsheetId: LLC, range: `${tab}!A2:K`, valueRenderOption: 'UNFORMATTED_VALUE',
+    spreadsheetId: LLC, range: `${tab}!A2:L`, valueRenderOption: 'UNFORMATTED_VALUE',
   });
   return (res.data.values || []).filter(r => r[0] || r[1]).map(r => ({
     date: typeof r[0] === 'string' ? r[0] : new Date(EPOCH + Number(r[0]) * 86400000).toISOString().slice(0, 10),
@@ -73,6 +73,7 @@ async function readTab(tab) {
     notes: String(r[8] ?? ''),
     id: String(r[9] ?? ''),
     personal: String(r[10] ?? '').toUpperCase() === 'TRUE',
+    project: String(r[11] ?? '').trim(),
   }));
 }
 
@@ -119,6 +120,7 @@ if (mergeLegacy) {
       if (type === 'Refund') { row.amount = Math.abs(row.amount); row.scline = row.scline || '1'; row.sclabel = row.sclabel || 'Gross receipts / sales'; row.notes = (row.notes ? row.notes + '; ' : '') + 'refund received (positive)'; }
       revenue.push(row);
     } else if (type === 'Expense' || type === 'COGS') {
+      row.project = String(r[28] ?? '').trim();
       expenses.push(row);
     } else { skipped++; }
     added++;
@@ -167,6 +169,7 @@ for (const r of revenue) {
       if (Number(p.amount) === Number(m.amount) && dayDiff(m.date, p.date) <= 2 && aliasMatch(m.desc, p.desc)) {
         drops.add(m);
         if (m.personal) { p.personal = true; p.review = 'Y'; }
+        if (m.project && !p.project) p.project = m.project;
         if (/revenue not expense/i.test(m.notes)) { p.notes = (p.notes ? p.notes + '; ' : '') + 'REVENUE NOT EXPENSE'; p.review = 'Y'; }
         if (m.review === 'Y' && !p.review) p.review = 'Y';
         break;
@@ -186,7 +189,7 @@ const tabOf = (name) => meta.data.sheets.find(s => s.properties.title === name);
 const expTab = tabOf('Expenses'), revTab = tabOf('Revenue');
 
 const toValues = list => list.map(x => [x.date, x.desc, x.amount, x.scline, x.sclabel,
-  x.source, x.card, x.review, x.notes, x.id, x.personal ? 'TRUE' : '']);
+  x.source, x.card, x.review, x.notes, x.id, x.personal ? 'TRUE' : '', x.project ?? '']);
 
 console.log(`Expenses: ${expenses.length} (dropped ${manualDrops} manual dups) | Revenue: ${revenue.length}`);
 console.log('Expenses by source:', JSON.stringify(expenses.reduce((a, x) => { a[x.source] = (a[x.source] || 0) + 1; return a; }, {})));
@@ -249,7 +252,10 @@ console.log(`Summary: income=${income} cogs=${cogsTotal} exp=${expTotal} net=${i
 if (!apply) { console.log('DRY RUN — re-run with --apply to write.'); process.exit(0); }
 
 for (const [tab, list] of [['Expenses', expenses], ['Revenue', revenue]]) {
-  await sheets.spreadsheets.values.clear({ spreadsheetId: LLC, range: `${tab}!A1:Z1000` });
+  // Clear the WHOLE tab, not A1:Z1000 — a leftover row below row 1000 (e.g. an
+  // old bottom-append at row ~1984) otherwise survives, gets re-read, and is
+  // re-written on every run: +1 duplicate row per --apply (bug fixed 2026-10-04).
+  await sheets.spreadsheets.values.clear({ spreadsheetId: LLC, range: tab });
   const values = [HEADERS, ...toValues(list)];
   await sheets.spreadsheets.values.update({
     spreadsheetId: LLC, range: `${tab}!A1`, valueInputOption: 'RAW',
@@ -261,6 +267,37 @@ await sheets.spreadsheets.values.update({
   spreadsheetId: LLC, range: 'Summary!A1', valueInputOption: 'USER_ENTERED',
   requestBody: { values: summaryRows },
 });
+
+// ---- Projects tab (live per-project spend/income; added 2026-11-10) ------------
+// Spend = SUMIF on Expenses col L (Project tag); personal rows carry no tag so
+// they never hit a project line. Income is mapped from Revenue Source:
+// Ticketflipping→Ticketflipping, Shopify/Facebook→Krendora.
+const PROJECTS = ['Krendora', 'Ticketflipping', 'WayCivil'];
+let projTab = tabOf('Projects');
+if (!projTab) {
+  await sheets.spreadsheets.batchUpdate({ spreadsheetId: LLC, requestBody: { requests: [{ addSheet: { properties: { title: 'Projects' } } }] } });
+  const meta2 = await sheets.spreadsheets.get({ spreadsheetId: LLC });
+  projTab = meta2.sheets ? meta2.sheets.find(s => s.properties.title === 'Projects') : meta2.data.sheets.find(s => s.properties.title === 'Projects');
+}
+const projRows = [['Project', 'Spend 2026', 'Income 2026', 'Net 2026']];
+const incomeFormula = {
+  Krendora: '=SUMIF(Revenue!F:F,"Shopify",Revenue!C:C)+SUMIF(Revenue!F:F,"Facebook",Revenue!C:C)',
+  Ticketflipping: '=SUMIF(Revenue!F:F,"Ticketflipping",Revenue!C:C)',
+  WayCivil: 0,
+};
+for (const p of PROJECTS) {
+  projRows.push([p, `=SUMIF(Expenses!L:L,"${p}",Expenses!C:C)`, incomeFormula[p] ?? 0,
+    `=C${projRows.length + 1}-B${projRows.length + 1}`]);
+}
+projRows.push(['Untagged (shared/overhead)', '=SUMPRODUCT((Expenses!L2:L1000="")*(Expenses!K2:K1000<>TRUE)*Expenses!C2:C1000)', '', '']);
+projRows.push(['', '', '', '']);
+projRows.push(['Project tags live in Expenses col L. Shared tools stay untagged until Enrique assigns them.', '', '', '']);
+await sheets.spreadsheets.values.clear({ spreadsheetId: LLC, range: 'Projects!A1:D20' });
+await sheets.spreadsheets.values.update({
+  spreadsheetId: LLC, range: 'Projects!A1', valueInputOption: 'USER_ENTERED',
+  requestBody: { values: projRows },
+});
+
 const boolReq = {
   setDataValidation: {
     range: { sheetId: expTab.properties.sheetId, startRowIndex: 1, endRowIndex: expenses.length + 1, startColumnIndex: 10, endColumnIndex: 11 },

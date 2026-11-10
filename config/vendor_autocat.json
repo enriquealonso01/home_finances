@@ -1,0 +1,438 @@
+{
+  "_meta": {
+    "purpose": "Auto-categorize new expense rows from Enrique's reviewed verdicts (2026-10 review sweep). Applied by scripts/autocat.js. A vendor match sets Sch C line + label + Personal; unknown vendors stay in the review queue for Enrique.",
+    "updated": "2026-11-10",
+    "projects": "2026-11-10: 'project' field stamps Expenses col L (Krendora / Ticketflipping / WayCivil). Projects tab sums it. Shared vendors stay untagged."
+  },
+  "rules": [
+    {
+      "match": "CONTAINS",
+      "pattern": "RIVER LANDING",
+      "sub": [
+        {
+          "match": "CONTAINS",
+          "pattern": "PARKING",
+          "scl": "9",
+          "label": "Car expenses (parking)"
+        },
+        {
+          "match": "ELSE",
+          "scl": "30",
+          "label": "Home office (rent)"
+        }
+      ]
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "RL MIAMI LP",
+      "scl": "9",
+      "label": "Car expenses (parking)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "MPA PARKING",
+      "personal": true,
+      "label": "Personal (street parking)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "CURSOR",
+      "scl": "27a",
+      "label": "Software subscription (Cursor)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "OPENAI",
+      "scl": "27a",
+      "label": "Software subscription (OpenAI API)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "ANTHROPIC",
+      "scl": "27a",
+      "label": "Software subscription (Anthropic API)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "LOVABLE",
+      "scl": "27a",
+      "label": "Software subscription (Lovable)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "NETLIFY",
+      "scl": "27a",
+      "label": "Software subscription (Netlify hosting)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "CLOUDFLARE",
+      "scl": "27a",
+      "label": "Software subscription (Cloudflare)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "AMAZON WEB",
+      "scl": "27a",
+      "label": "Software subscription (AWS hosting)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "GOOGLE CLOUD",
+      "scl": "27a",
+      "label": "Software subscription (Google Cloud)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "FIREWORKS",
+      "scl": "27a",
+      "label": "Software subscription (Fireworks AI API)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "FAL FEATURES",
+      "scl": "27a",
+      "label": "Software subscription (fal.ai)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "STORYSHORT",
+      "scl": "27a",
+      "label": "Software subscription (StoryShort.ai)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "KLINGAI",
+      "scl": "27a",
+      "label": "Software subscription (Kling.ai)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "OPUS CLIP",
+      "scl": "27a",
+      "label": "Software subscription (Opus Clip)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "ELEVENLABS",
+      "scl": "27a",
+      "label": "Software subscription (ElevenLabs)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "WEBSHARE",
+      "scl": "27a",
+      "label": "Software subscription (Webshare proxy)",
+      "project": "Ticketflipping"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "DECODO",
+      "scl": "27a",
+      "label": "Software subscription (Decodo proxy)",
+      "project": "Ticketflipping"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "MULTILOGIN",
+      "scl": "27a",
+      "label": "Software subscription (Multilogin antidetect)",
+      "project": "Ticketflipping"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "TINYURL",
+      "scl": "27a",
+      "label": "Software subscription (TinyURL)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "MONEPILOT",
+      "scl": "27a",
+      "label": "Software subscription (MoneyPilot)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "TELNYX",
+      "scl": "27a",
+      "label": "Software subscription (Telnyx voice API)",
+      "project": "Ticketflipping"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "PLAID",
+      "scl": "27a",
+      "label": "Software subscription (Plaid API)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "Z.AI",
+      "scl": "27a",
+      "label": "Software subscription (Z.AI)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "TXVRFY",
+      "scl": "27a",
+      "label": "Software subscription (TXVRFY)",
+      "project": "Ticketflipping"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "TX VERIFY",
+      "scl": "27a",
+      "label": "Software subscription (TX verify)",
+      "project": "Ticketflipping"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "NOKIA",
+      "scl": "27a",
+      "label": "Software subscription (Nokia)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "MOXEE",
+      "scl": "25",
+      "label": "Utilities (mobile/hotspot)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "AT&T",
+      "scl": "25",
+      "label": "Utilities (AT&T mobile)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "FLORIDA POWER",
+      "scl": "25",
+      "label": "Utilities (electric)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "UPLOAD",
+      "scl": "8",
+      "label": "Advertising (Upload-Post)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "SHOPIFY",
+      "sub": [
+        {
+          "match": "CONTAINS",
+          "pattern": "PROCESSING",
+          "scl": "10",
+          "label": "Commissions and fees (Shopify processing)",
+          "project": "Krendora"
+        },
+        {
+          "match": "ELSE",
+          "scl": "27a",
+          "label": "Other expenses (Shopify platform)",
+          "project": "Krendora"
+        }
+      ],
+      "project": "Krendora"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "FACEBOOK PAY",
+      "scl": "27a",
+      "label": "Other expenses (Facebook payroll)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "FLORIDA DEPARTMENT",
+      "scl": "23",
+      "label": "Taxes and licenses (FL DOR)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "DIVISION OF CORP",
+      "scl": "23",
+      "label": "Taxes and licenses (Sunbiz filing)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "TAXACT",
+      "scl": "23",
+      "label": "Taxes and licenses (TaxAct)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "AMERICAN AIR",
+      "scl": "27a",
+      "label": "Travel (airfare)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "UNITED ",
+      "scl": "27a",
+      "label": "Travel (airfare)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "ARIA",
+      "scl": "27a",
+      "label": "Travel (Las Vegas hotel)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "MANDALAY",
+      "scl": "27a",
+      "label": "Travel (Las Vegas hotel)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "MBAY",
+      "scl": "27a",
+      "label": "Travel (Las Vegas hotel)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "FIVERR",
+      "scl": "27a",
+      "label": "Contract labor (Fiverr)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "SQUARESPACE",
+      "scl": "27a",
+      "label": "Software subscription (Squarespace domain)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "RENDI",
+      "scl": "27a",
+      "label": "Software subscription (Rendi.dev)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "PRESALECODE",
+      "scl": "27a",
+      "label": "Other expenses (presale code)",
+      "project": "Ticketflipping"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "CRANDALL",
+      "scl": "27a",
+      "label": "Office expense (chair — de minimis)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "NETCUP",
+      "scl": "27a",
+      "label": "Software subscription (Netcup VPS)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "WAYFAIR",
+      "scl": "27a",
+      "label": "Office expense (Wayfair)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "AMAZON PRIME",
+      "scl": "27a",
+      "label": "Other expenses (Amazon Prime)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "MONTHLY SERVICE FEE",
+      "scl": "27a",
+      "label": "Other expenses (bank service fee)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "MEMBERSHIP FEE",
+      "scl": "27a",
+      "label": "Other expenses (card membership)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "KRENDORA",
+      "scl": "27a",
+      "label": "Other expenses (Krendora)",
+      "project": "Krendora"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "BOATTESTS101",
+      "personal": true,
+      "label": "Personal (boating course)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "MIXTILES",
+      "scl": "27a",
+      "label": "Office expense (office decoration)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "107 TASTE",
+      "personal": true,
+      "label": "Personal (restaurant)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "RUSTY PELICAN",
+      "personal": true,
+      "label": "Personal (restaurant)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "RAISING CANE",
+      "personal": true,
+      "label": "Personal (restaurant)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "RINCONCITO",
+      "personal": true,
+      "label": "Personal (restaurant)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "SKOOPS",
+      "personal": true,
+      "label": "Personal (food kiosk)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "SUSHI SAKE",
+      "personal": true,
+      "label": "Personal (restaurant)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "ROSS STORE",
+      "personal": true,
+      "label": "Personal (retail)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "GAMETIME",
+      "personal": true,
+      "label": "Personal (event tickets)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "TURO",
+      "personal": true,
+      "label": "Personal (car rental)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "LYFT",
+      "personal": true,
+      "label": "Personal (rideshare)"
+    },
+    {
+      "match": "CONTAINS",
+      "pattern": "365 VEND",
+      "personal": true,
+      "label": "Personal (vending)"
+    }
+  ]
+}
